@@ -1,12 +1,14 @@
 package com.company;
 
-import com.sun.xml.internal.rngom.dt.CachedDatatypeLibraryFactory;
-
 import javax.swing.*;
 
 public class Calculator extends JFrame {
 
     private static final long serialVersionUID = 192838L;
+
+    private JMenuBar menuBar;
+    private JMenu file;
+    private JMenuItem close;
 
     public static void main(String[] args) {
         new Calculator();
@@ -15,7 +17,17 @@ public class Calculator extends JFrame {
 
     public Calculator() {
         super("Calculator");
+        sendMenuBar();
         sendUI(this);
+    }
+
+    private void sendMenuBar() {
+        menuBar = new JMenuBar();
+        close = new JMenuItem("Close");
+        file = new JMenu(" File ");
+        setJMenuBar(menuBar);
+        menuBar.add(file);
+        file.add(close);
     }
 
     private void sendUI(Calculator app) {
