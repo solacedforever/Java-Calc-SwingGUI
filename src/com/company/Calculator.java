@@ -1,6 +1,8 @@
 package com.company;
 
 import javax.swing.*;
+import javax.swing.text.EditorKit;
+import java.awt.event.*;
 
 public class Calculator extends JFrame {
 
@@ -8,9 +10,22 @@ public class Calculator extends JFrame {
 
     private JMenuBar menuBar;
     private JMenu file;
+    private JMenu edit;
+    private JMenu help;
     private JMenuItem close;
+    private JMenuItem copy;
+    private JMenuItem view;
+    private JMenuItem about;
+
 
     public static void main(String[] args) {
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            System.out.println("Could not load Sys themed buttons");
+        }
+
         new Calculator();
 
     }//ends main
@@ -23,11 +38,53 @@ public class Calculator extends JFrame {
 
     private void sendMenuBar() {
         menuBar = new JMenuBar();
-        close = new JMenuItem("Close");
         file = new JMenu(" File ");
+        edit = new JMenu("Edit");
+        help = new JMenu("Help");
+        close = new JMenuItem("Close");
+        copy = new JMenuItem("Copy");
+        view = new JMenuItem("View Help");
+        about = new JMenuItem("About");
         setJMenuBar(menuBar);
         menuBar.add(file);
+        menuBar.add(edit);
+        menuBar.add(help);
+
+
+        close.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        copy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        view.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        about.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+
+
         file.add(close);
+        edit.add(copy);
+        help.add(view);
+        help.add(about);
     }
 
     private void sendUI(Calculator app) {
