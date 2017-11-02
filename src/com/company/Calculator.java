@@ -1,13 +1,12 @@
 package com.company;
 
 import javax.swing.*;
-import javax.swing.text.EditorKit;
 import java.awt.event.*;
 
 public class Calculator extends JFrame {
 
     private static final long serialVersionUID = 192838L;
-
+    
     private JMenuBar menuBar;
     private JMenu file;
     private JMenu edit;
@@ -19,7 +18,7 @@ public class Calculator extends JFrame {
 
 
     public static void main(String[] args) {
-
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
@@ -79,8 +78,7 @@ public class Calculator extends JFrame {
             }
         });
 
-
-
+        
         file.add(close);
         edit.add(copy);
         help.add(view);
