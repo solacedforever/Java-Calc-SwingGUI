@@ -128,12 +128,8 @@ public class Calculator extends JFrame {
                 if (display.getText().equalsIgnoreCase("0")){
                     display.setText("7");
                     return;
-                    
                 }
-      
                 display.append("7");
-                
-                
             }
         });
         add(seven);
@@ -152,9 +148,7 @@ public class Calculator extends JFrame {
                     return;
                 
                 }
-
-              display.append("8");
-            
+                display.append("8");
             }
         });
         add(eight);
@@ -172,9 +166,7 @@ public class Calculator extends JFrame {
                     display.setText("9");
                     return;
                 }
-
-              display.append("9");
-            
+                display.append("9");
             }
         });
         add(nine);
