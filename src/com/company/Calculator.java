@@ -1,7 +1,11 @@
 package com.company;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Calculator extends JFrame {
 
@@ -60,21 +64,25 @@ public class Calculator extends JFrame {
         copy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                String display = " ";
+                StringSelection string = new StringSelection(display);
+                Clipboard system = Toolkit.getDefaultToolkit().getSystemClipboard();
+                system.setContents(string, string);
+                
             }
         });
 
         view.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+            
             }
         });
 
         about.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+            
             }
         });
 
