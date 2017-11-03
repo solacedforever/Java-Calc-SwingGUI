@@ -20,7 +20,11 @@ public class Calculator extends JFrame {
     private JMenuItem view;
     private JMenuItem about;
     
-    private JTextField display;
+    private JTextArea display;
+    
+    private JButton seven;
+    private JButton eight;
+    private JButton nine;
 
 
     public static void main(String[] args) {
@@ -39,7 +43,9 @@ public class Calculator extends JFrame {
         super("Calculator");
         sendMenuBar();
         sendDisplay();
+        sendButtons();
         sendUI(this);
+        
         
     }
 
@@ -68,8 +74,8 @@ public class Calculator extends JFrame {
         copy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String display = "youtube ";
-                StringSelection string = new StringSelection(display);
+                String tempDisplay = display.getText();
+                StringSelection string = new StringSelection(tempDisplay);
                 Clipboard system = Toolkit.getDefaultToolkit().getSystemClipboard();
                 system.setContents(string, string);
                 
@@ -100,12 +106,78 @@ public class Calculator extends JFrame {
     }
     
     private void sendDisplay(){
-        display = new JTextField("0");
+        display = new JTextArea("0");
         display.setBounds(10,10,325,50);
         display.setEditable(false);
         display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        display.setText("0");
         display.setFont(new Font("Arial",Font.PLAIN,32));
         add(display);
+    }
+    
+    private void sendButtons() {
+        seven = new JButton("7");
+        seven.setBounds(10,70,65,55);
+        seven.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().length() > 13)
+                    return;
+                
+                if (display.getText().equalsIgnoreCase("0")){
+                    display.setText("7");
+                    return;
+                    
+                }
+      
+                display.append("7");
+                
+                
+            }
+        });
+        add(seven);
+        
+        eight = new JButton("8");
+        eight.setBounds(82,70,65,55);
+        eight.addActionListener(new ActionListener() {
+        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().length() > 13)
+                    return;
+            
+                if (display.getText().equalsIgnoreCase("0")){
+                    display.setText("8");
+                    return;
+                
+                }
+
+              display.append("8");
+            
+            }
+        });
+        add(eight);
+        
+        nine = new JButton("9");
+        nine.setBounds(154,70,65,55);
+        nine.addActionListener(new ActionListener() {
+        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().length() > 13)
+                    return;
+            
+                if (display.getText().equalsIgnoreCase("0")){
+                    display.setText("9");
+                    return;
+                }
+
+              display.append("9");
+            
+            }
+        });
+        add(nine);
     }
 
     private void sendUI(Calculator app) {
