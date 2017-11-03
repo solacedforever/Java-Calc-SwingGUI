@@ -19,6 +19,8 @@ public class Calculator extends JFrame {
     private JMenuItem copy;
     private JMenuItem view;
     private JMenuItem about;
+    
+    private JTextField display;
 
 
     public static void main(String[] args) {
@@ -36,7 +38,9 @@ public class Calculator extends JFrame {
     public Calculator() {
         super("Calculator");
         sendMenuBar();
+        sendDisplay();
         sendUI(this);
+        
     }
 
     private void sendMenuBar() {
@@ -64,7 +68,7 @@ public class Calculator extends JFrame {
         copy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String display = " ";
+                String display = "youtube ";
                 StringSelection string = new StringSelection(display);
                 Clipboard system = Toolkit.getDefaultToolkit().getSystemClipboard();
                 system.setContents(string, string);
@@ -75,6 +79,7 @@ public class Calculator extends JFrame {
         view.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "There are no help topics","Calculator",JOptionPane.OK_OPTION);
             
             }
         });
@@ -82,7 +87,8 @@ public class Calculator extends JFrame {
         about.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            
+                JOptionPane.showMessageDialog(null, "SampleCalc","Calculator",JOptionPane.OK_OPTION);
+    
             }
         });
 
@@ -91,6 +97,15 @@ public class Calculator extends JFrame {
         edit.add(copy);
         help.add(view);
         help.add(about);
+    }
+    
+    private void sendDisplay(){
+        display = new JTextField("0");
+        display.setBounds(10,10,325,50);
+        display.setEditable(false);
+        display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        display.setFont(new Font("Arial",Font.PLAIN,32));
+        add(display);
     }
 
     private void sendUI(Calculator app) {
