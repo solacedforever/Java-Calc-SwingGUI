@@ -37,11 +37,6 @@ public class Calculator extends JFrame {
     private JButton eight;
     private JButton nine;
     
-    
-  
-    
-
-
     public static void main(String[] args) {
         
         try {
