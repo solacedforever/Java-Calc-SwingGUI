@@ -22,9 +22,17 @@ public class Calculator extends JFrame {
     
     private JTextArea display;
     
+    
+    private JButton one;
+    private JButton two;
+    private JButton three;
+    private JButton four;
+    private JButton five;
+    private JButton six;
     private JButton seven;
     private JButton eight;
     private JButton nine;
+    
 
 
     public static void main(String[] args) {
@@ -107,15 +115,124 @@ public class Calculator extends JFrame {
     
     private void sendDisplay(){
         display = new JTextArea("0");
-        display.setBounds(10,10,325,50);
+        display.setBounds(10,10,325,40);
         display.setEditable(false);
-        display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        display.setText("0");
         display.setFont(new Font("Arial",Font.PLAIN,32));
         add(display);
     }
     
     private void sendButtons() {
+        
+        one = new JButton ("1");
+        one.setBounds(10,194,65,55);
+        one.addActionListener(new ActionListener() {
+        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().length() > 13)
+                    return;
+            
+                if (display.getText().equalsIgnoreCase("0")){
+                    display.setText("1");
+                    return;
+                }
+                display.append("1");
+            }
+        });
+        add(one);
+        
+        two = new JButton ("2");
+        two.setBounds(82,194,65,55);
+        two.addActionListener(new ActionListener() {
+        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().length() > 13)
+                    return;
+            
+                if (display.getText().equalsIgnoreCase("0")){
+                    display.setText("2");
+                    return;
+                }
+                display.append("2");
+            }
+        });
+        add(two);
+        
+        three = new JButton ("3");
+        three.setBounds(154,194,65,55);
+        three.addActionListener(new ActionListener() {
+        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().length() > 13)
+                    return;
+            
+                if (display.getText().equalsIgnoreCase("0")){
+                    display.setText("3");
+                    return;
+                }
+                display.append("3");
+            }
+        });
+        add(three);
+        
+        
+        
+        four = new JButton ("4");
+        four.setBounds(10,132,65,55);
+        four.addActionListener(new ActionListener() {
+        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().length() > 13)
+                    return;
+            
+                if (display.getText().equalsIgnoreCase("0")){
+                    display.setText("4");
+                    return;
+                }
+                display.append("4");
+            }
+        });
+        add(four);
+        
+        five = new JButton("5");
+        five.setBounds(82,132, 65,55);
+        five.addActionListener(new ActionListener() {
+        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().length() > 13)
+                    return;
+            
+                if (display.getText().equalsIgnoreCase("0")){
+                    display.setText("5");
+                    return;
+                }
+                display.append("5");
+            }
+        });
+        add(five);
+        
+        six = new JButton ("6");
+        six.setBounds(154,132,65,55);
+        six.addActionListener(new ActionListener() {
+        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().length() > 13)
+                    return;
+            
+                if (display.getText().equalsIgnoreCase("0")){
+                    display.setText("6");
+                    return;
+                }
+                display.append("6");
+            }
+        });
+        add(six);
+        
         seven = new JButton("7");
         seven.setBounds(10,70,65,55);
         seven.addActionListener(new ActionListener() {
