@@ -7,6 +7,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class Calculator extends JFrame {
 
     private static final long serialVersionUID = 192838L;
@@ -23,6 +24,9 @@ public class Calculator extends JFrame {
     private JTextArea display;
     
     
+    private JButton decimal;
+    private JButton posneg;
+    private JButton zero;
     private JButton one;
     private JButton two;
     private JButton three;
@@ -32,6 +36,9 @@ public class Calculator extends JFrame {
     private JButton seven;
     private JButton eight;
     private JButton nine;
+    
+    
+  
     
 
 
@@ -122,6 +129,47 @@ public class Calculator extends JFrame {
     }
     
     private void sendButtons() {
+        
+        zero = new JButton("0");
+        zero.setBounds(10,256,65,55);
+        zero.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().equalsIgnoreCase("0") || display.getText().length() > 13)
+                    return;
+                display.append("0");
+            }
+        });
+        add(zero);
+        
+        decimal = new JButton(".");
+        decimal.setBounds(82,256,65,55);
+        decimal.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().contains("."))
+                    return;
+                display.append(".");
+            }
+        });
+        add(decimal);
+        
+        posneg = new JButton("+/-");
+        posneg.setBounds(154,256,65,55);
+        posneg.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (display.getText().equalsIgnoreCase("0"))
+                    return;
+                display.setText(Double.toString(Double.parseDouble(display.getText()) * (-1)));
+                if (display.getText().endsWith(".0"))
+                    display.setText(display.getText().replace(".0", ""));
+            }
+        });
+        add(posneg);
         
         one = new JButton ("1");
         one.setBounds(10,194,65,55);
