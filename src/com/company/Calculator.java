@@ -23,7 +23,8 @@ public class Calculator extends JFrame {
     
     private JTextArea display;
     
-    
+    private JButton clear;
+    private JButton equals;
     private JButton decimal;
     private JButton posneg;
     private JButton zero;
@@ -37,6 +38,11 @@ public class Calculator extends JFrame {
     private JButton eight;
     private JButton nine;
     
+    private JButton division;
+    private JButton multiplication;
+    private JButton subtraction;
+    private JButton addition;
+    
     public static void main(String[] args) {
         
         try {
@@ -44,9 +50,7 @@ public class Calculator extends JFrame {
         } catch (Exception e) {
             System.out.println("Could not load Sys themed buttons");
         }
-
         new Calculator();
-
     }//ends main
 
     public Calculator() {
@@ -55,8 +59,6 @@ public class Calculator extends JFrame {
         sendDisplay();
         sendButtons();
         sendUI(this);
-        
-        
     }
 
     private void sendMenuBar() {
@@ -88,7 +90,6 @@ public class Calculator extends JFrame {
                 StringSelection string = new StringSelection(tempDisplay);
                 Clipboard system = Toolkit.getDefaultToolkit().getSystemClipboard();
                 system.setContents(string, string);
-                
             }
         });
 
@@ -104,7 +105,6 @@ public class Calculator extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "SampleCalc","Calculator",JOptionPane.OK_OPTION);
-    
             }
         });
 
@@ -117,13 +117,31 @@ public class Calculator extends JFrame {
     
     private void sendDisplay(){
         display = new JTextArea("0");
-        display.setBounds(10,10,325,40);
+        display.setBounds(10,10,280,40);
         display.setEditable(false);
         display.setFont(new Font("Arial",Font.PLAIN,32));
         add(display);
     }
     
     private void sendButtons() {
+        
+        addition = new JButton("+");
+        addition.setBounds()
+        
+        
+        clear = new JButton("Clear");
+        clear.setBounds(154,318,137,55);
+        clear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                display.setText("0");
+            }
+        });
+        add(clear);
+        
+        equals = new JButton("=");
+        equals.setBounds(10,318,137, 55);
+        add(equals);
         
         zero = new JButton("0");
         zero.setBounds(10,256,65,55);
@@ -172,7 +190,7 @@ public class Calculator extends JFrame {
         
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (display.getText().length() > 13)
+                if (display.getText().length() > 10)
                     return;
             
                 if (display.getText().equalsIgnoreCase("0")){
@@ -190,7 +208,7 @@ public class Calculator extends JFrame {
         
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (display.getText().length() > 13)
+                if (display.getText().length() > 10)
                     return;
             
                 if (display.getText().equalsIgnoreCase("0")){
@@ -208,7 +226,7 @@ public class Calculator extends JFrame {
         
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (display.getText().length() > 13)
+                if (display.getText().length() > 10)
                     return;
             
                 if (display.getText().equalsIgnoreCase("0")){
@@ -228,7 +246,7 @@ public class Calculator extends JFrame {
         
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (display.getText().length() > 13)
+                if (display.getText().length() > 10)
                     return;
             
                 if (display.getText().equalsIgnoreCase("0")){
@@ -246,7 +264,7 @@ public class Calculator extends JFrame {
         
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (display.getText().length() > 13)
+                if (display.getText().length() > 10)
                     return;
             
                 if (display.getText().equalsIgnoreCase("0")){
@@ -264,7 +282,7 @@ public class Calculator extends JFrame {
         
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (display.getText().length() > 13)
+                if (display.getText().length() > 10)
                     return;
             
                 if (display.getText().equalsIgnoreCase("0")){
@@ -282,7 +300,7 @@ public class Calculator extends JFrame {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (display.getText().length() > 13)
+                if (display.getText().length() > 10)
                     return;
                 
                 if (display.getText().equalsIgnoreCase("0")){
@@ -300,7 +318,7 @@ public class Calculator extends JFrame {
         
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (display.getText().length() > 13)
+                if (display.getText().length() > 10)
                     return;
             
                 if (display.getText().equalsIgnoreCase("0")){
@@ -319,7 +337,7 @@ public class Calculator extends JFrame {
         
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (display.getText().length() > 13)
+                if (display.getText().length() > 10)
                     return;
             
                 if (display.getText().equalsIgnoreCase("0")){
@@ -334,7 +352,7 @@ public class Calculator extends JFrame {
 
     private void sendUI(Calculator app) {
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        app.setSize(350, 400);
+        app.setSize(308, 430);
         app.setResizable(false);
         app.setLayout(null);
         app.setLocationRelativeTo(null);
