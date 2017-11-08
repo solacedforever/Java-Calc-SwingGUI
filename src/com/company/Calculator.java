@@ -43,6 +43,30 @@ public class Calculator extends JFrame {
     private JButton subtraction;
     private JButton addition;
     
+    public double getTempFirst() {
+        return tempFirst;
+    }
+    
+    public void setTempFirst(double tempFirst) {
+        this.tempFirst = tempFirst;
+    }
+    
+    private double tempFirst = 0.0;
+    private double tempSecond = 0.0;
+    
+    public double getTempSecond() {
+        return tempSecond;
+    }
+    
+    public void setTempSecond(double tempSecond) {
+        this.tempSecond = tempSecond;
+    }
+    
+   
+    
+    private boolean[] operation = new boolean[4];
+    
+    
     public static void main(String[] args) {
         
         try {
@@ -125,9 +149,29 @@ public class Calculator extends JFrame {
     
     private void sendButtons() {
         
-        addition = new JButton("+");
-        addition.setBounds()
+        division = new JButton("/");
+        division.setBounds(226,70,65,55);
+        division.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setTempFirst(Double.parseDouble(display.getText()));
+                display.setText("0");
+                operation[0] = true;
+            }
+        });
+        add(division);
         
+        multiplication = new JButton("*");
+        multiplication.setBounds(226,132,65,55);
+        add(multiplication);
+        
+        subtraction = new JButton("-");
+        subtraction.setBounds(226,194,65,55);
+        add(subtraction);
+        
+        addition = new JButton("+");
+        addition.setBounds(226,256,65,55);
+        add(addition);
         
         clear = new JButton("Clear");
         clear.setBounds(154,318,137,55);
@@ -141,6 +185,15 @@ public class Calculator extends JFrame {
         
         equals = new JButton("=");
         equals.setBounds(10,318,137, 55);
+        equals.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (operation[0])
+                    display.setText(Double.toString(getTempFirst() / Double.parseDouble(display.getText())));
+                if (display.getText().endsWith(".0"))
+                    display.setText(display.getText().replace(".0", ""));
+                }
+        });
         add(equals);
         
         zero = new JButton("0");
