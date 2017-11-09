@@ -52,17 +52,6 @@ public class Calculator extends JFrame {
     }
     
     private double tempFirst = 0.0;
-    private double tempSecond = 0.0;
-    
-    public double getTempSecond() {
-        return tempSecond;
-    }
-    
-    public void setTempSecond(double tempSecond) {
-        this.tempSecond = tempSecond;
-    }
-    
-   
     
     private boolean[] operation = new boolean[4];
     
@@ -163,14 +152,38 @@ public class Calculator extends JFrame {
         
         multiplication = new JButton("*");
         multiplication.setBounds(226,132,65,55);
+        multiplication.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setTempFirst(Double.parseDouble(display.getText()));
+                display.setText("0");
+                operation[1] = true;
+            }
+        });
         add(multiplication);
         
         subtraction = new JButton("-");
         subtraction.setBounds(226,194,65,55);
+        subtraction.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setTempFirst(Double.parseDouble(display.getText()));
+                display.setText("0");
+                operation[2] = true;
+            }
+        });
         add(subtraction);
         
         addition = new JButton("+");
         addition.setBounds(226,256,65,55);
+        addition.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setTempFirst(Double.parseDouble(display.getText()));
+                display.setText("0");
+                operation[3] = true;
+            }
+        });
         add(addition);
         
         clear = new JButton("Clear");
@@ -179,6 +192,9 @@ public class Calculator extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 display.setText("0");
+                setTempFirst(0.0);
+                for (int i = 0; i <= 3; i ++)
+                    operation[i] = false;
             }
         });
         add(clear);
@@ -190,9 +206,18 @@ public class Calculator extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (operation[0])
                     display.setText(Double.toString(getTempFirst() / Double.parseDouble(display.getText())));
+                else if (operation[1])
+                    display.setText(Double.toString(getTempFirst() * Double.parseDouble(display.getText())));
+                else if (operation[2])
+                    display.setText(Double.toString(getTempFirst() - Double.parseDouble(display.getText())));
+                else if (operation[3])
+                    display.setText(Double.toString(getTempFirst() + Double.parseDouble(display.getText())));
                 if (display.getText().endsWith(".0"))
                     display.setText(display.getText().replace(".0", ""));
-                }
+                setTempFirst(0.0);
+                for (int i = 0; i <= 3; i ++)
+                    operation[i] = false;
+            }
         });
         add(equals);
         
